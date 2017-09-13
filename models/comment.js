@@ -3,7 +3,7 @@ var schema = mongoose.Schema;
 var objectId = schema.ObjectId;
 
 var CommentSchema = new schema({
-	image_id: {type : ObjectId},
+	image_id: {type : objectId},
 	email : {type : String },
 	name : {type : String},
 	gravatar : {type : String},

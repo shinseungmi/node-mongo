@@ -1,5 +1,5 @@
-var mongoose = reqquire('mongoose');
-var schema = mongooe.Schema;
+var mongoose = require('mongoose');
+var schema = mongoose.Schema;
 var path = require('path');
 
 var ImageSchema	= new schema({
