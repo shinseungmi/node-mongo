@@ -94,9 +94,6 @@ module.exports = {
 			Models.Image.findOne({filename : {$regex : req.params.image_id}}, function(err, image) {
 				if(!err && image) {
 					
-					for(key in req) {
-						console.log('----'+key);
-					}
 					var newComment = new Models.Comment();
 					newComment.comment = req.params.comment;
 					newComment.gravatar = md5(newComment.email);
