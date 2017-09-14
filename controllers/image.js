@@ -3,6 +3,7 @@ var path = require('path');
 var sidebar = require('../helpers/sidebar');
 var Models	= require('../models');
 var md5	= require('MD5');
+var bodyparser = require('body-parser');
 module.exports = {
 		index : function(req, res) {
 			var viewModel = {
@@ -94,8 +95,12 @@ module.exports = {
 			Models.Image.findOne({filename : {$regex : req.params.image_id}}, function(err, image) {
 				if(!err && image) {
 					
-					var newComment = new Models.Comment();
+					var newComment = new Models.Comment(req.body);
+					for(key in req.body) {
+						console.log('params -- '+key);
+					}
 					newComment.comment = req.params.comment;
+					console.log('comment --- '+newComment.comment);
 					newComment.gravatar = md5(newComment.email);
 					newComment.image_id = image._id;
 					newComment.save(function(err, comment) {
